@@ -128,6 +128,57 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 175370205629909977, guid: e18ff732e8ed7df41b71fc0b234967ac, type: 3}
   m_PrefabInstance: {fileID: 1778589215669267796}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &472224686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472224685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1f732ced2b5a449a021bade4015e5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heavy: 1
+  smooth: 1
+  durable: 2
+  mutative: 2
+  stiff: 2
+  maxSmooth: 3
+  maxHeavy: 3
+  maxDurable: 3
+  maxMutative: 3
+  maxStiff: 3
+--- !u!114 &472224687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472224685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86207543961d754f96c18d7bf803b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smart: 2
+  fertile: 2
+  unstable: 2
+  fast: 2
+  valuable: 2
+--- !u!114 &472224688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472224685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8d96f12b7ef3dd42b43db0b562edf8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &472224689
 Rigidbody2D:
   serializedVersion: 4
@@ -149,6 +200,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &472224690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472224685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0d28f527d85df4fa49f05b1f61984e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statA: {fileID: 472224687}
+  statB: {fileID: 472224686}
+  curStamina: 3
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1189897584134024411, guid: 2fe07ca38cc57be4693a8e0d30cb58ac, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1189897584134024415, guid: 2fe07ca38cc57be4693a8e0d30cb58ac, type: 3}
       propertyPath: m_LocalPosition.x
