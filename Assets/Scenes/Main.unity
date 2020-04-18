@@ -1156,6 +1156,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RadarGrid_A
       objectReference: {fileID: 0}
+    - target: {fileID: 5608409321394352748, guid: c3f61f28af66c0d4dbee4fcb6f3b0ba4, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 8034f7689f655704d896dbc9bd4a0076, type: 2}
+    - target: {fileID: 5608409321394352748, guid: c3f61f28af66c0d4dbee4fcb6f3b0ba4, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9070162348986363496, guid: c3f61f28af66c0d4dbee4fcb6f3b0ba4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
