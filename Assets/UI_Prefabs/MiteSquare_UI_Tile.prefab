@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 693460168057804019}
   - component: {fileID: 5001624390069634805}
   - component: {fileID: 3189607181626991184}
+  - component: {fileID: 7000357987101806604}
   m_Layer: 5
-  m_Name: MiteSquare
+  m_Name: MiteSquare_UI_Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180, y: 0}
+  m_AnchoredPosition: {x: 0, y: -10}
   m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5001624390069634805
@@ -77,6 +78,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7000357987101806604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720483254496445267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ac7cd664be1a946967dfc2a03944cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  borderImg: {fileID: 8993246518028163734}
+  selectColor: {r: 0, g: 0.5660378, b: 0.039242443, a: 1}
+  hoverColor: {r: 0.80016845, g: 1, b: 0.22745098, a: 1}
+  idleColor: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 0.41960785}
+  mite: {fileID: 2712231685011208492}
 --- !u!1 &6971826338705176775
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.07371545, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_OnCullStateChanged:
@@ -162,6 +180,9 @@ GameObject:
   - component: {fileID: 7461352512460208153}
   - component: {fileID: 3003335575598620701}
   - component: {fileID: 3149742093331246241}
+  - component: {fileID: 2712231685011208492}
+  - component: {fileID: 8818240730071426119}
+  - component: {fileID: 6619553125512747631}
   m_Layer: 5
   m_Name: Char
   m_TagString: Untagged
@@ -225,6 +246,60 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2712231685011208492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7253487689188354458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0d28f527d85df4fa49f05b1f61984e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statA: {fileID: 8818240730071426119}
+  statB: {fileID: 6619553125512747631}
+  curStamina: 3
+--- !u!114 &8818240730071426119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7253487689188354458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86207543961d754f96c18d7bf803b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smart: 3
+  fertile: 1
+  unstable: 2
+  fast: 1
+  valuable: 2
+--- !u!114 &6619553125512747631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7253487689188354458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1f732ced2b5a449a021bade4015e5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heavy: 1
+  smooth: 0
+  durable: 2
+  mutative: 3
+  stiff: 1
+  maxSmooth: 3
+  maxHeavy: 3
+  maxDurable: 3
+  maxMutative: 3
+  maxStiff: 3
 --- !u!1 &9134602883207990216
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9919771, b: 0, a: 1}
+  m_Color: {r: 0.7924528, g: 0.7915048, b: 0.66162336, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_OnCullStateChanged:

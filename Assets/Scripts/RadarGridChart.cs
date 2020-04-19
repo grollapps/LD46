@@ -67,16 +67,27 @@ public class RadarGridChart : MonoBehaviour
        
     }
 
-    public void updateChart()
+    /// <summary>
+    /// Performs the update of the material to render the new chart values
+    /// </summary>
+    private void updateChart()
     {
-        //        Material curMat = img.material;
         Material curMat = img.material;
-        curMat.SetFloat("_MaxVal", maxVal);
+        //curMat.SetFloat("_MaxVal", maxVal); //shouldn't change after init
         curMat.SetFloat("_TopVal", topVal);
         curMat.SetFloat("_TopRightVal", topRightVal);
         curMat.SetFloat("_BotRightVal", botRightVal);
         curMat.SetFloat("_BotLeftVal", botLeftVal);
-        curMat.SetFloat("_TopLeftVal", topLeftVal);
-       
+        curMat.SetFloat("_TopLeftVal", topLeftVal);       
+    }
+
+    public void setValues(float top, float topRight, float bottomRight,
+        float bottomLeft, float topLeft)
+    {
+        topVal = top;
+        topRightVal = topRight;
+        botRightVal = bottomRight;
+        botLeftVal = bottomLeft;
+        topLeftVal = topLeft;
     }
 }
