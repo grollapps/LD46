@@ -3,21 +3,24 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _MainCol("MainCol", Color) = (1, 1, 1, 1)
         _BorderColor("Border Color", Color) = (0, 0, 0, 1.0)
         _FillColor("Fill Color", Color) = (0, 1, 0, 1.0)
         _BorderThresh("Border Thresh", Float) = 0.001
-    //endpoints
-        _TopVert ("Top Vert", Vector) = (0.5, 0.9, 0, 0)
+        //endpoints
+        _TopVert("Top Vert", Vector) = (0.5, 0.9, 0, 0)
         _TopRightVert("Top Right Vert", Vector) = (0.8, 0.8, 0, 0)
         _BotRightVert("Bottom Right Vert", Vector) = (0.7, 0.2, 0, 0)
         _BotLeftVert("Bottom Left Vert", Vector) = (0.2, 0.2, 0, 0)
         _TopLeftVert("Top Left Vert", Vector) = (0.2, 0.8, 0, 0)
         _MidVert("Middle", Vector) = (0.5, 0.5, 0, 0)
-        
-    //max val to set endpoint
-        _MaxVal("Max Value", Float) = 3
 
-    //cur values
+        //max val to set endpoint
+        _MaxVal("Max Value", Float) = 3
+        //allow small spikes to show
+        _MinVal("Min Value", Float) = 0.125 
+
+        //cur values
         _TopVal("Top Value", Float) = 3
         _TopRightVal("Top Right Value", Float) = 3
         _BotRightVal("Bottom Right Value", Float) = 3
@@ -29,6 +32,8 @@
         //Tags { "RenderType"="Opaque" }
         //LOD 100
         Tags { "RenderType" = "Transparent" "Queue" = "Transparent+1"}
+        Cull Off
+        Lighting Off
         ZWrite Off
         Blend SrcAlpha OneMinusSrcAlpha
 
@@ -37,9 +42,7 @@
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            // make fog work
-            //#pragma multi_compile_fog
-
+            
             #include "UnityCG.cginc"
 
             struct appdata
@@ -51,7 +54,6 @@
             struct v2f
             {
                 float2 uv : TEXCOORD0;
-                //UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
             };
             half4 getAABB(half2 a, half2 b, half2 c, half2 d, half2 e);
@@ -59,6 +61,7 @@
             fixed intersects(half2 pt0_0, half2 pt0_1, half2 pt1_0, half2 pt1_1, out half distFromIntersect);
 
             sampler2D _MainTex;
+            fixed4 _MainCol;
             float4 _MainTex_ST;
             float4 _BorderColor;
             float4 _FillColor;
@@ -74,6 +77,7 @@
 
             //max val to set endpoint
             half _MaxVal;
+            half _MinVal;
 
             //cur values
             half _TopVal;
@@ -97,19 +101,11 @@
 
                 //determine bounding points in uv text coords (assumes BL:(0,0) to TR:(1,1,))
                 //half2 tuv = lerp(_MidVert.xy, _TopVert.xy, 1);
-                half2 tuv = lerp(_MidVert.xy, _TopVert.xy, (_TopVal / _MaxVal));
-                half2 truv = lerp(_MidVert.xy, _TopRightVert.xy, (_TopRightVal / _MaxVal));
-                half2 bruv = lerp(_MidVert.xy, _BotRightVert.xy, (_BotRightVal / _MaxVal));
-                half2 bluv = lerp(_MidVert.xy, _BotLeftVert.xy, (_BotLeftVal / _MaxVal));
-                half2 tluv = lerp(_MidVert.xy, _TopLeftVert.xy, (_TopLeftVal / _MaxVal));
-
-                /*
-                half2 tuv = _MidVert + half2(0.0,0.5); //TEST VALS
-                half2 truv = _MidVert + half2(0.3, 0.2);
-                half2 bruv = _MidVert + half2(0.3, -0.2);
-                half2 bluv = _MidVert + half2(-0.3, -0.2);
-                half2 tluv = _MidVert + half2(-0.3, 0.2);
-                */
+                half2 tuv = lerp(_MidVert.xy, _TopVert.xy, max(_MinVal, (_TopVal / _MaxVal)));
+                half2 truv = lerp(_MidVert.xy, _TopRightVert.xy, max(_MinVal, (_TopRightVal / _MaxVal)));
+                half2 bruv = lerp(_MidVert.xy, _BotRightVert.xy, max(_MinVal, (_BotRightVal / _MaxVal)));
+                half2 bluv = lerp(_MidVert.xy, _BotLeftVert.xy, max(_MinVal, (_BotLeftVal / _MaxVal)));
+                half2 tluv = lerp(_MidVert.xy, _TopLeftVert.xy, max(_MinVal, (_TopLeftVal / _MaxVal)));
 
                 half4 aabb = getAABB(tuv, truv, bruv, bluv, tluv);
                 half2 aabbBL = aabb.xy;
@@ -139,9 +135,9 @@
                 }
 
                 // sample the texture.  If the uv is inside the polygon then apply our shading too.
-                fixed4 texCol = tex2D(_MainTex, i.uv);
+                fixed4 texCol = tex2D(_MainTex, i.uv) * _MainCol;
                 //fixed4 fillCol = (minDist <= _BorderThresh) ? _BorderColor : _FillColor; //TODO border
-                fixed4 fillCol = _FillColor; //TODO
+                fixed4 fillCol = _FillColor; //TODO add in border color
                 fixed4 col;
                 if (uvIsInside) {
                     col = texCol * _FillColor;
@@ -149,9 +145,6 @@
                 else {
                     col = texCol;
                 }
-               // col.a = i.uv.x;
-                // apply fog
-                //UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
             }
 

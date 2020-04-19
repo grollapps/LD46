@@ -67,7 +67,7 @@ public class MoveScript : MonoBehaviour
         mySpeedDelta = calcFlatSpeedDelta(lastSpeed);
         lastSpeed += mySpeedDelta;
         lastSpeed = Mathf.Min(lastSpeed, myMaxSpeed);
-        Debug.Log("speed: " + lastSpeed);
+        //Debug.Log("speed: " + lastSpeed);
         //TODO stamina update (from damage, e.g.)
 
         //do the move
@@ -84,7 +84,7 @@ public class MoveScript : MonoBehaviour
     {
         float maxS = MI * statA.smart
             - MS * (statB.maxDurable - curStamina);
-        Debug.Log(gameObject.name + " maxSpeed:" + maxS);
+        //Debug.Log(gameObject.name + " maxSpeed:" + maxS);
 
         return maxS;
     }
@@ -101,7 +101,7 @@ public class MoveScript : MonoBehaviour
             + D * H * statB.heavy * Mathf.Max(MS, (statB.maxSmooth - statB.smooth));
 
         float speedDelta = s - (curSpeed * drag);
-        Debug.Log(gameObject.name + " speed:" + s + ", drag:" + drag + ", speedDelta:" + speedDelta);
+        //Debug.Log(gameObject.name + " speed:" + s + ", drag:" + drag + ", speedDelta:" + speedDelta);
 
         return speedDelta;
     }
