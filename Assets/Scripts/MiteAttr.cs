@@ -41,6 +41,11 @@ public class MiteAttr : MonoBehaviour
         
     }
 
+    public Sprite getUiImageSprite()
+    {
+        return gameObject.GetComponent<SpriteRenderer>().sprite;
+    }
+
     private Vector2 getCenter()
     {
         return midPt.transform.position;

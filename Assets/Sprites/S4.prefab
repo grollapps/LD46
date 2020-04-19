@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8095786783038812455}
   - component: {fileID: 8095786783038812452}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PtTR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 8095786783378335579}
   - component: {fileID: 8095786783378335576}
   - component: {fileID: 550867347257370922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: S4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,8 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0d28f527d85df4fa49f05b1f61984e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statA: {fileID: 0}
-  statB: {fileID: 0}
+  statA: {fileID: 8095786783378335578}
+  statB: {fileID: 8095786783378335581}
   curStamina: 3
   midPt: {fileID: 8095786783638148971}
   connectPts:
@@ -280,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8095786783454993658}
   - component: {fileID: 8095786783454993659}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PtBL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8095786783469782516}
   - component: {fileID: 8095786783469782517}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PtR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8095786783523328037}
   - component: {fileID: 8095786783523328034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PtBR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8095786783638148970}
   - component: {fileID: 8095786783638148971}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,7 +460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8095786784399737315}
   - component: {fileID: 8095786784399737312}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PtTL
   m_TagString: Untagged
   m_Icon: {fileID: 0}

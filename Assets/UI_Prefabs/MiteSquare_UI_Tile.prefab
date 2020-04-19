@@ -91,10 +91,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   borderImg: {fileID: 8993246518028163734}
+  bgFillImg: {fileID: 8893400052752596203}
+  charImg: {fileID: 3149742093331246241}
   selectColor: {r: 0, g: 0.5660378, b: 0.039242443, a: 1}
   hoverColor: {r: 0.80016845, g: 1, b: 0.22745098, a: 1}
   idleColor: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 0.41960785}
-  mite: {fileID: 2712231685011208492}
+  mite: {fileID: 0}
 --- !u!1 &6971826338705176775
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +109,7 @@ GameObject:
   - component: {fileID: 4607727587625653549}
   - component: {fileID: 8993246518028163734}
   m_Layer: 5
-  m_Name: Border
+  m_Name: BorderImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,11 +182,8 @@ GameObject:
   - component: {fileID: 7461352512460208153}
   - component: {fileID: 3003335575598620701}
   - component: {fileID: 3149742093331246241}
-  - component: {fileID: 2712231685011208492}
-  - component: {fileID: 8818240730071426119}
-  - component: {fileID: 6619553125512747631}
   m_Layer: 5
-  m_Name: Char
+  m_Name: CharImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,60 +245,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2712231685011208492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7253487689188354458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd0d28f527d85df4fa49f05b1f61984e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statA: {fileID: 8818240730071426119}
-  statB: {fileID: 6619553125512747631}
-  curStamina: 3
---- !u!114 &8818240730071426119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7253487689188354458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a86207543961d754f96c18d7bf803b51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smart: 3
-  fertile: 1
-  unstable: 2
-  fast: 1
-  valuable: 2
---- !u!114 &6619553125512747631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7253487689188354458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e1f732ced2b5a449a021bade4015e5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heavy: 1
-  smooth: 0
-  durable: 2
-  mutative: 3
-  stiff: 1
-  maxSmooth: 3
-  maxHeavy: 3
-  maxDurable: 3
-  maxMutative: 3
-  maxStiff: 3
 --- !u!1 &9134602883207990216
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +257,7 @@ GameObject:
   - component: {fileID: 7674412951925176888}
   - component: {fileID: 8893400052752596203}
   m_Layer: 5
-  m_Name: Fill
+  m_Name: FillImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

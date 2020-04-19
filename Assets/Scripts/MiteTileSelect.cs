@@ -13,6 +13,9 @@ public class MiteTileSelect : MonoBehaviour, IPointerClickHandler,
 {
 
     public Image borderImg;
+    public Image bgFillImg;
+    public Image charImg;
+
     public Color selectColor;
     public Color hoverColor;
     public Color idleColor;
@@ -20,16 +23,21 @@ public class MiteTileSelect : MonoBehaviour, IPointerClickHandler,
     //mite associated with the current tile
     public MiteAttr mite;
 
+    private Color origFillColor;
+
+    private Color whiter = new Vector4(1.1f, 1.1f, 1.1f, 1f);
+
     private bool isSelected = false;
     private bool isHovering = false;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //toggle selection
-        clearStatRadars(); //clear existing (none selected), if necessary
+        //toggle border selection
         isSelected = !isSelected;
         setBorderColor(isSelected, isHovering);
-        updateStatRadars();
+        //toggle global stat selection indicator
+        bool isStatSelected = SceneManager.instance.toggleStatSelect(this);
+        setBgFillColor(isStatSelected);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -70,12 +78,36 @@ public class MiteTileSelect : MonoBehaviour, IPointerClickHandler,
         }
     }
 
+    //set the inner fill color based on being selected or not
+    private void setBgFillColor(bool bgSelected)
+    {
+        if (bgSelected)
+        {
+            bgFillImg.color = 0.6f * origFillColor + (0.4f * hoverColor * whiter);
+        }
+        else
+        {
+            bgFillImg.color = origFillColor;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         if(borderImg == null)
         {
             Debug.LogError("missing image for border");
+        }
+        if (charImg == null)
+        {
+            Debug.LogError("missing char image slot");
+        }
+        origFillColor = bgFillImg.color;
+
+        if(mite != null)
+        {
+            Debug.Log("Setting mite image using " + mite.gameObject.name);
+            charImg.sprite = mite.getUiImageSprite();
         }
         
     }
@@ -86,25 +118,22 @@ public class MiteTileSelect : MonoBehaviour, IPointerClickHandler,
         
     }
 
-    private void updateStatRadars()
+    /// <summary>
+    /// Set bg fill as unselected (stat)
+    /// </summary>
+    public void unselectStat()
     {
-        if (isSelected)
-        {
-            if (mite != null)
-            {
-                SceneManager.instance.updateStatA(mite.statA);
-                SceneManager.instance.updateStatB(mite.statB);
-            }
-            else
-            {
-                clearStatRadars();
-            }
-        }
+        setBgFillColor(false);
     }
 
-    private void clearStatRadars()
+    public StatA getStatA()
     {
-        SceneManager.instance.clearStatA();
-        SceneManager.instance.clearStatB();
+        return mite.statA;
     }
+
+    public StatB getStatB()
+    {
+        return mite.statB;
+    }
+
 }

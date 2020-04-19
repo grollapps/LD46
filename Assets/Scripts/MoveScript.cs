@@ -9,6 +9,11 @@ public class MoveScript : MonoBehaviour
     public const float baseSpeed = 0.1f;
     public const float baseDrag = 0.09f;
 
+    //physics influence
+    public const float W = 2.0f; //weight factor
+    public const float AWD = 0.1f; //angular weight drag factor
+
+    //velocity influence
     public const float F = 0.025f; //speed factor
     public const float D = 0.013f; //drag factor
     public const float H = 0.0125f; //Heavy factor
@@ -28,7 +33,8 @@ public class MoveScript : MonoBehaviour
     //updated per frame
     bool started;
     float lastSpeed;
-    
+
+    private Rigidbody2D rb;
     
     // Start is called before the first frame update
     void Start()
@@ -46,6 +52,12 @@ public class MoveScript : MonoBehaviour
     {
         statA = attr.statA;
         statB = attr.statB;
+
+        rb = GetComponent<Rigidbody2D>();
+        rb.mass = W * (statB.heavy / statB.maxHeavy);
+        rb.angularDrag = AWD * (statB.heavy / statB.maxHeavy);
+
+
         curStamina = attr.curStamina;
         mySpeedDelta = calcFlatSpeedDelta(0);
         myMaxSpeed = calcMaxSpeed();
