@@ -5,6 +5,7 @@ using UnityEngine;
 public class MiteLimb : MonoBehaviour
 {
 
+    //pt where the limb will attach
     public JointPoint conPt;
 
     // Start is called before the first frame update
